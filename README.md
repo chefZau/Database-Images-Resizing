@@ -1,6 +1,6 @@
 # Resizing Database Images Using CLR Store Procedure
 
-I worked for a consulting firm recently. One of our main tasks is maintaining e-commerce websites for our clients. The website is hosted on a third-party server. All interactions to the backend are through specific platforms. Moreover, product images are stored in a SQL Server database in VARBINARY(MAX) format. The method for importing them is unrestrained by using third-party software. Therefore large photos can be added to the database by end-users easily.
+I am working for a consulting firm recently. One of our main tasks is maintaining e-commerce websites for our clients. The website is hosted on a third-party server. All interactions to the backend are through specific platforms. Moreover, product images are stored in a SQL Server database in VARBINARY(MAX) format. The method for importing them is unrestrained by using third-party software. Therefore large photos can be added to the database by end-users easily.
 
 A picture, on average, can have a size of 10KB to 10MB. Since new products will be adding to the database, the size of the database will keep increasing. Large images can create significant impacts on server performance and synchronization. Seeking for a way to resize images in the database becomes a pressing matter of the moment.
 
