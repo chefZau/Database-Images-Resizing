@@ -1,0 +1,1 @@
+SQLCMD -S FLBISTRACK -f 65001 -i C:\SQLJobs\ImageResizing.sql >> C:\SQLJobs\output.txt
