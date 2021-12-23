@@ -1,21 +1,6 @@
 # Resizing Database Images Using CLR Store Procedure
 
-I am working for a consulting firm recently. One of our main tasks is maintaining e-commerce websites for our clients. The website is hosted on a third-party server. All interactions to the backend are through specific platforms. Moreover, product images are stored in a SQL Server database in VARBINARY(MAX) format. The method for importing them is unrestrained by using third-party software. Therefore large photos can be added to the database by end-users easily.
-
-A picture, on average, can have a size of 10KB to 10MB. Since new products will be adding to the database, the size of the database will keep increasing. Large images can create significant impacts on server performance and synchronization. Seeking for a way to resize images in the database becomes a pressing matter of the moment.
-
-We have come up with many solutions:
-
-* Retrieve product code for all large images in SQL, scrape corresponding photos from the client website. Resize, and reimport them to the server.
-* Export images from the database to local, resize and reimport them.
-
-However, the above solutions are time-consuming and require significant manual efforts. The purpose of this project is to create a reusable store procedure for image resizing in SQL Server 2014 or above. My goal is to keep everything in SQL Server (without exporting), and an image can be resized (resampling) down to 100KB by only running the following SQL:
-
-```SQL
-EXEC ResizeImage @value = @x OUTPUT, @img=@img_binary, @width=750, @height=750;
-```
-
-Yet, SQL code has a limitation. Initially (without using plug-in or tools), SQL Server is a data storage system, and it is unable to edit our VARBINARY(MAX) images. However, since SQL Server is written in C#, we can "talk" to her in C# too (same as Excel and VBA). The official term for this feature is called [CLR Integration](https://docs.microsoft.com/en-us/sql/relational-databases/clr-integration/clr-integration-overview?view=sql-server-ver15), and we are creating a [CLR Stored Procedure](https://docs.microsoft.com/en-us/previous-versions/sql/sql-server-2008/ms131094(v=sql.100)) in this project. To rephrase, we are building a store procedure in C#.
+SQL code has a limitation. Initially (without using plug-in or tools), SQL Server is a data storage system, and it is unable to edit our VARBINARY(MAX) images. However, since SQL Server is written in C#, we can "talk" to her in C# too (same as Excel and VBA). The official term for this feature is called [CLR Integration](https://docs.microsoft.com/en-us/sql/relational-databases/clr-integration/clr-integration-overview?view=sql-server-ver15), and we are creating a [CLR Stored Procedure](https://docs.microsoft.com/en-us/previous-versions/sql/sql-server-2008/ms131094(v=sql.100)) in this project. To rephrase, we are building a store procedure in C#.
 
 ## Getting Started
 
